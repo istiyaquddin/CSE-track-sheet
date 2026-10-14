@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem Solving Arena - IIUC CSE 1111 Programming Solutions & AI Study Guide</title>
+  <meta name="description" content="Comprehensive Problem Solving Arena for IIUC CSE Students featuring Beecrowd, Codeforces Newcomer sheet, and HackerRank problems with 3-tier pedagogical AI hints, verified C solutions, and video tutorials.">
+  <meta name="keywords" content="IIUC, CSE, Problem Solving, C Programming, Beecrowd, Codeforces, HackerRank, AI Learning Rules, C Solutions">
+
+  <!-- Google Fonts: Inter, Outfit, Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient Glow Effects -->
+  <div class="bg-glow-orb orb-1"></div>
+  <div class="bg-glow-orb orb-2"></div>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand-group" title="Back to Unified IIUC Portal">
+        <div class="brand-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="brand-text">
+          <h1>Problem Solving Arena</h1>
+          <p>IIUC CSE Department &bull; Structured Programming</p>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <a href="../index.html" class="nav-btn" title="Back to All Courses">
+          <i class="fa-solid fa-house"></i>
+          <span>Main Portal</span>
+        </a>
+        <button class="nav-btn" onclick="openModal('videosModal')">
+          <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
+          <span>Video Sessions</span>
+        </button>
+        <button class="nav-btn primary" onclick="openModal('aiModal')">
+          <i class="fa-solid fa-brain"></i>
+          <span>AI Rules</span>
+        </button>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Toggle Theme">
+          <i class="fa-solid fa-sun" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="badge-pill">
+        <i class="fa-solid fa-shield-halved"></i> IIUC CSE-1111 Arena &bull; Verified Syllabus
+      </div>
+      <h2 class="hero-title">
+        Master C Programming & <br>
+        <span class="gradient-text">Problem Solving Competence</span>
+      </h2>
+      <p class="hero-subtitle">
+        Practice curated problems across Data Types, Branching Conditionals, Iterations, and Logic Building.
+        Follow the pedagogical AI guidelines to truly master problem solving rather than memorizing code.
+      </p>
+
+      <!-- Stats Grid -->
+      <section class="stats-grid" aria-label="Learning Metrics">
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fa-solid fa-list-check"></i></div>
+          <div class="stat-info">
+            <h3 id="statTotal">--</h3>
+            <p>Total Practice Problems</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon cyan"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <h3 id="statSolved">--</h3>
+            <p>Problems Solved (AC)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fa-solid fa-chart-pie"></i></div>
+          <div class="stat-info">
+            <h3 id="statPercent">--%</h3>
+            <p>Curriculum Progress</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fa-brands fa-youtube"></i></div>
+          <div class="stat-info">
+            <h3 id="statVideos">--</h3>
+            <p>Lecture & Solve Sessions</p>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <!-- AI Guidelines Banner (Pedagogy Feature) -->
+    <section class="ai-banner" aria-label="AI Learning Guidelines">
+      <div class="ai-banner-header">
+        <div class="ai-banner-title">
+          <i class="fa-solid fa-brain"></i>
+          <div>
+            <h2>AI ব্যবহারের নতুন নিয়ম (Pedagogical Learning Rules)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              AI ব্যবহার করা খারাপ নয়; সমস্যা হয় যখন AI তোমার হয়ে প্রতিটি সিদ্ধান্ত নেয় এবং তুমি নিজে চিন্তা করার সুযোগ পাও না।
+            </p>
+          </div>
+        </div>
+        <div class="ai-actions">
+          <button class="btn-copy-prompt" onclick="copyAiPrompt()" id="copyPromptBtn">
+            <i class="fa-solid fa-copy"></i> Copy Tutor Prompt
+          </button>
+        </div>
+      </div>
+
+      <div class="ai-rules-grid">
+        <div class="ai-rule-item">
+          <h4><i class="fa-solid fa-pencil"></i> ১. নিজে চেষ্টা (Self Effort)</h4>
+          <p>Problem বুঝে input/output, example ও logic খাতায় লিখবে; অন্তত ২০-৩০ মিনিট নিজে সমাধান করার চেষ্টা করবে।</p>
+        </div>
+        <div class="ai-rule-item">
+          <h4><i class="fa-solid fa-lightbulb"></i> ২. ৩টি ধাপে Hint (Tiered Hints)</h4>
+          <p>আটকে গেলে AI-কে বলবে: “একটি hint দাও, full solution নয়।” ৩ ধাপে concept, logic, ও corner case বুঝবে।</p>
+        </div>
+        <div class="ai-rule-item">
+          <h4><i class="fa-solid fa-bug"></i> ৩. Code Debug (Error Finding)</h4>
+          <p>নিজে code লিখবে, compile error ও runtime message পড়বে এবং কারণ খুঁজে বের করার মাধ্যমে দক্ষতা বাড়াবে।</p>
+        </div>
+        <div class="ai-rule-item">
+          <h4><i class="fa-solid fa-check-double"></i> ৪. Verify & Self Test (যাচাই)</h4>
+          <p>AI ছাড়া নিজে code লিখতে পারা, explain করা এবং modify করতে পারা হলো আসল শেখার মানদণ্ড।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters & Search Controls -->
+    <section class="filter-wrapper" aria-label="Filters">
+      <div class="filter-top-row">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search by Problem ID (e.g. D1, C4, L24), Name, or Topic..." autocomplete="off">
+        </div>
+
+        <div class="secondary-filters">
+          <select id="judgeFilter" class="filter-select" aria-label="Select Online Judge">
+            <option value="all">All Platforms (Beecrowd, CF, HackerRank)</option>
+            <option value="beecrowd">Beecrowd (URI)</option>
+            <option value="codeforces">Codeforces</option>
+            <option value="hackerrank">HackerRank</option>
+            <option value="custom">Custom Lab Problems</option>
+          </select>
+
+          <select id="statusFilter" class="filter-select" aria-label="Select Status">
+            <option value="all">All Status</option>
+            <option value="ac">Solved (AC)</option>
+            <option value="todo">Unsolved (Todo)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-pills" id="categoryPills" role="tablist">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- Problems Grid -->
+    <section class="problems-grid" id="problemsContainer" aria-label="Problem Cards">
+      <!-- Problem Cards rendered dynamically by app.js -->
+    </section>
+  </main>
+
+  <!-- Video Sessions Modal -->
+  <div class="modal-overlay" id="videosModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('videosModal')">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <i class="fa-brands fa-youtube" style="color: #ef4444; font-size: 2rem;"></i>
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">Course Sessions & Solve Classes</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Watch playlist video lectures & assignment walkthroughs</p>
+        </div>
+      </div>
+      <div id="videosListContainer">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Guideline Detailed Modal -->
+  <div class="modal-overlay" id="aiModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('aiModal')">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <i class="fa-solid fa-graduation-cap" style="color: var(--accent-purple); font-size: 2rem;"></i>
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">AI ব্যবহারের নতুন নিয়ম ও শেখার পদ্ধতি</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">How to effectively learn programming with AI without cheating your brain</p>
+        </div>
+      </div>
+
+      <div style="line-height: 1.7; color: var(--text-muted); font-size: 0.95rem;">
+        <p style="margin-bottom: 1rem; color: var(--text-main);">
+          AI ব্যবহার করা খারাপ নয়। সমস্যা হয় যখন AI তোমার হয়ে প্রতিটি সিদ্ধান্ত নেয় এবং তুমি নিজে চেষ্টা করার সুযোগ পাও না।
+        </p>
+
+        <h4 style="color: var(--accent-cyan); margin: 1.25rem 0 0.5rem;"><i class="fa-solid fa-circle-1"></i> ১. নিজে চেষ্টা</h4>
+        <p>Problem বুঝে input/output, example ও logic লিখবে; অন্তত ২০-৩০ মিনিট চেষ্টা করবে।</p>
+
+        <h4 style="color: var(--accent-cyan); margin: 1.25rem 0 0.5rem;"><i class="fa-solid fa-circle-2"></i> ২. ৩টি Hint</h4>
+        <p>আটকে গেলে AI-কে বলবে: <em>“একটি hint দাও, full solution নয়।”</em></p>
+
+        <h4 style="color: var(--accent-cyan); margin: 1.25rem 0 0.5rem;"><i class="fa-solid fa-circle-3"></i> ৩. Code Debug</h4>
+        <p>নিজে code লিখবে, run করবে, error পড়বে এবং কারণ খুঁজবে।</p>
+
+        <h4 style="color: var(--accent-cyan); margin: 1.25rem 0 0.5rem;"><i class="fa-solid fa-circle-4"></i> ৪. Verify</h4>
+        <p>নিজের solution কাজ করার পরে AI review নেবে; ভুল নিজে ঠিক করবে।</p>
+
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0;">
+          <h4 style="color: var(--accent-cse); margin-bottom: 0.5rem;"><i class="fa-solid fa-award"></i> নিজের শেখা যাচাই</h4>
+          <p style="color: var(--text-main);">কোনো topic নিজের শেখা বলে ধরবে যখন তুমি AI ছাড়া:</p>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>(১) code নিজে লিখতে পারো</li>
+            <li>(২) code প্রতি লাইনে explain করতে পারো</li>
+            <li>(৩) প্রশ্নকর্তা চাইলে code modify করে নতুন লজিক বানাতে পারো।</li>
+          </ul>
+        </div>
+
+        <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); padding: 1.25rem;">
+          <h4 style="color: #a5b4fc; margin-bottom: 0.5rem;"><i class="fa-solid fa-comment-dots"></i> AI-কে যেভাবে বলবে</h4>
+          <p style="font-style: italic; color: #e2e8f0;">
+            “আমি নিজে solve করতে চাই. Full solution দেবে না. প্রথমে একটি hint দাও. আমার logic ভুল হলে কোথায় ভুল হচ্ছে বুঝতে সাহায্য করো, কিন্তু code লিখে দিও না।”
+          </p>
+          <button class="nav-btn primary" onclick="copyAiPrompt()" style="margin-top: 1rem;">
+            <i class="fa-solid fa-copy"></i> Copy This Prompt
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        International Islamic University Chittagong &bull; Department of Computer Science & Engineering
+      </p>
+      <p style="margin-top: 0.4rem; font-size: 0.78rem; opacity: 0.75;">
+        Problem Solving Arena &bull; Structured Programming Curriculum &bull; Designed for IIUC CSE Students
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
