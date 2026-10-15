@@ -190,10 +190,10 @@
       <button class="modal-close" onclick="closeModal('videosModal')">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
-        <i class="fa-brands fa-youtube" style="color: #ef4444; font-size: 2rem;"></i>
+      <div class="modal-header-box">
+        <i class="fa-brands fa-youtube" style="color: #ef4444; font-size: 2rem; flex-shrink: 0;"></i>
         <div>
-          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">Course Sessions & Solve Classes</h3>
+          <h3 style="font-family: var(--font-heading); font-size: 1.35rem;">Course Sessions & Solve Classes</h3>
           <p style="font-size: 0.85rem; color: var(--text-muted);">Watch playlist video lectures & assignment walkthroughs</p>
         </div>
       </div>
@@ -209,10 +209,10 @@
       <button class="modal-close" onclick="closeModal('aiModal')">
         <i class="fa-solid fa-xmark"></i>
       </button>
-      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
-        <i class="fa-solid fa-graduation-cap" style="color: var(--accent-purple); font-size: 2rem;"></i>
+      <div class="modal-header-box">
+        <i class="fa-solid fa-graduation-cap" style="color: var(--accent-purple); font-size: 2rem; flex-shrink: 0;"></i>
         <div>
-          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">AI ব্যবহারের নতুন নিয়ম ও শেখার পদ্ধতি</h3>
+          <h3 style="font-family: var(--font-heading); font-size: 1.35rem;">AI ব্যবহারের নতুন নিয়ম ও শেখার পদ্ধতি</h3>
           <p style="font-size: 0.85rem; color: var(--text-muted);">How to effectively learn programming with AI without cheating your brain</p>
         </div>
       </div>
@@ -268,6 +268,17 @@
       </p>
     </div>
   </footer>
+
+  <!-- Back to top floating button -->
+  <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()" title="Back to top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastNotification" role="alert" aria-live="polite">
+    <i class="fa-solid fa-circle-check" style="color: var(--accent-cse);"></i>
+    <span id="toastMessage">Prompt copied to clipboard!</span>
+  </div>
 
   <!-- Scripts -->
   <script src="data.js"></script>

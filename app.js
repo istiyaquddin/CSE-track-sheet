@@ -264,6 +264,24 @@ function toggleSolutionDrawer(id) {
   }
 }
 
+// Toast Notification Helper
+function showToast(message) {
+  const toast = document.getElementById('toastNotification');
+  const msg = document.getElementById('toastMessage');
+  if (!toast || !msg) return;
+  msg.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3200);
+}
+
+// Scroll To Top
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // Copy Solution to Clipboard
 function copySolution(id) {
   const problem = ARENA_DATA.problems.find(p => p.id === id);
@@ -277,6 +295,7 @@ function copySolution(id) {
         btn.innerHTML = `<i class="fa-regular fa-copy"></i> Copy`;
       }, 2000);
     }
+    showToast(`Solution code for ${problem.id} copied to clipboard!`);
   });
 }
 
@@ -291,7 +310,7 @@ function copyAiPrompt() {
         btn.innerHTML = `<i class="fa-solid fa-copy"></i> Copy Tutor Prompt`;
       }, 2500);
     }
-    alert("AI টিউটর প্রম্পট কপি হয়েছে! ChatGPT / Claude / Gemini-তে পেস্ট করে hint চেয়ে শিখুন।");
+    showToast("AI টিউটর প্রম্পট কপি হয়েছে! চ্যাটে পেস্ট করে প্র্যাকটিস শুরু করুন।");
   });
 }
 
@@ -312,13 +331,13 @@ function renderVideosList() {
   if (!container) return;
 
   container.innerHTML = ARENA_DATA.videos.map(v => `
-    <div style="background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
-      <div>
-        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase;">${v.session} &bull; ${v.category}</div>
-        <h4 style="font-size: 1rem; margin: 0.25rem 0;">${escapeHTML(v.title)}</h4>
-        <div style="font-size: 0.75rem; color: var(--text-muted);"><i class="fa-regular fa-clock"></i> ${v.duration} &bull; ${v.date}</div>
+    <div class="video-item-card">
+      <div class="video-item-info">
+        <div class="video-item-meta">${escapeHTML(v.session)} &bull; ${escapeHTML(v.category)}</div>
+        <h4 class="video-item-title">${escapeHTML(v.title)}</h4>
+        <div class="video-item-date"><i class="fa-regular fa-clock"></i> ${escapeHTML(v.duration)} &bull; ${escapeHTML(v.date)}</div>
       </div>
-      <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="nav-btn primary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; text-decoration: none;">
+      <a href="${v.url}" target="_blank" rel="noopener noreferrer" class="nav-btn primary video-watch-btn">
         <i class="fa-solid fa-play"></i> Watch
       </a>
     </div>
@@ -368,6 +387,18 @@ function initListeners() {
       e.target.style.display = 'none';
     }
   });
+
+  // Back to Top button scroll visibility listener
+  window.addEventListener('scroll', () => {
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (backToTopBtn) {
+      if (window.scrollY > 350) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+  }, { passive: true });
 }
 
 // Bootstrapper
